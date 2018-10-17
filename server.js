@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
+const users = require('./routes/users');
+const posts = require('./routes/posts');
+
 const app = express();
 
 //DB Config
@@ -17,6 +20,10 @@ mongoose.connect(db, {
 app.get('/', (req, res) => {
     res.send('dziala');
 });
+
+//use routes
+app.use('/users', users);
+app.use('/posts', posts);
 
 const port = process.env.PORT || 8080;
 
