@@ -4,7 +4,7 @@ const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 
 // load user model
-const User = require('../../models/User')
+const User = require('../models/User')
 
 // route  GET posts
 // desc   Test users route
@@ -12,7 +12,7 @@ const User = require('../../models/User')
 
 router.get('/', (req, res) => {
     res.json({
-        message: "it's works"
+        message: 'it work'
     });
 });
 
@@ -45,7 +45,8 @@ router.post('/register', (req, res) => {
                     bcrypt.hash(newUser.password, salt, (err, hash) => {
                         if (err) throw err;
                         newUser.password = hash;
-                        newUser.save()
+                        newUser
+                            .save()
                             .then(user => res.json(user))
                             .catch(err => console.log(err));
                     })

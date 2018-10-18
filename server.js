@@ -8,11 +8,14 @@ const posts = require('./routes/posts');
 
 const app = express();
 
+
+
 //body parser middleware
 app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
+
 
 //DB Config
 
@@ -26,13 +29,15 @@ mongoose.connect(db, {
     .catch(err => console.log(err));
 
 app.get('/', (req, res) => {
-    res.send('dziala');
+    res.json({
+        message: 'main'
+    });
 });
 
 //use routes
 app.use('/users', users);
 app.use('/posts', posts);
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3030;
 
-app.listen(port, () => console.log(`Server is litening on port ${port}`));
+app.listen(port, () => console.log(`Server is listening on port ${port}`));
