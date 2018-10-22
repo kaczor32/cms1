@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// route  GET users/register
+// route  POST users/register
 // desc   register user
 // access Public
 
@@ -72,7 +72,7 @@ router.post('/register', (req, res) => {
         })
 });
 
-// route  GET users/login
+// route  POST users/login
 // desc   login user / returning JWTtoken
 // access Public
 
